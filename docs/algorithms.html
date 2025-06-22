@@ -4,65 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Algorithms & Data Structures | CS-499 Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <header>
     <h1>Algorithms & Data Structures</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li><a href="software.html">Software Design & Engineering</a></li>
+        <li><a href="algorithms.html">Algorithms & Data Structures</a></li>
         <li><a href="databases.html">Databases</a></li>
-        <li><a href="code-review.html">Code Review</a></li>
+        <li><a href="code-review.html">Code Review Video</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h2>Artifact Overview</h2>
-    <p>
-      This enhancement showcases a queue-based request management system I developed for HELIOS using Python. The original approach processed media requests as individual, one-off entries with no validation, order control, or optimization. I refactored this to use a SHA-256 de-duplicating priority queue system to streamline and secure backend automation.
-    </p>
+    <section>
+      <h2>Artifact Overview</h2>
+      <p>
+        This enhancement focused on developing and optimizing an algorithmic solution to manage media request processing in the HELIOS server project.
+        The implemented Python-based queue system utilizes object-oriented design to manage asynchronous request handling.
+      </p>
+    </section>
 
-    <h2>Download or View</h2>
-    <ul>
-      <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/blob/main/media_request_queue.py" target="_blank">View Priority Queue Code on GitHub</a></li>
-    </ul>
+    <section>
+      <h2>Project Background</h2>
+      <p>
+        In HELIOS, users can submit requests for media downloads. This enhancement introduced a structured, class-based queue
+        that ensures requests are processed in FIFO order while avoiding duplication and maintaining system performance.
+      </p>
+    </section>
 
-    <h2>Code Preview</h2>
-    <pre><code># media_request_queue.py
-import hashlib
-from collections import deque
+    <section>
+      <h2>Enhancement Highlights</h2>
+      <ul>
+        <li>Designed a robust Python queue class with enqueue, dequeue, and peek methods</li>
+        <li>Implemented a method to avoid duplicate requests and manage maximum queue length</li>
+        <li>Integrated real-time logging for each media request processed</li>
+        <li>Applied unit testing to validate the correctness of queue behavior</li>
+      </ul>
+    </section>
 
-class RequestQueue:
-    def __init__(self):
-        self.queue = deque()
-        self.hash_set = set()
+    <section>
+      <h2>Preview the Code</h2>
+      <p>Below is a code snippet from the core class used in the request queue system:</p>
+      <pre><code class="language-python">class MediaRequestQueue:
+    def __init__(self, max_size=50):
+        self.queue = []
+        self.max_size = max_size
 
-    def _hash_request(self, request_data):
-        return hashlib.sha256(request_data.encode()).hexdigest()
-
-    def enqueue(self, request_data):
-        request_hash = self._hash_request(request_data)
-        if request_hash not in self.hash_set:
-            self.queue.append(request_data)
-            self.hash_set.add(request_hash)
-            return True
-        return False
+    def enqueue(self, request):
+        if request not in self.queue and len(self.queue) < self.max_size:
+            self.queue.append(request)
 
     def dequeue(self):
         if self.queue:
-            data = self.queue.popleft()
-            self.hash_set.remove(self._hash_request(data))
-            return data
+            return self.queue.pop(0)
         return None
-</code></pre>
 
-    <h2>Reflection</h2>
-    <p>
-      This enhancement deepened my appreciation for efficient algorithms in backend systems. It reminded me that thoughtful planning of data flow is essential to maintaining long-term system health. Integrating data structures like queues not only solved real pain points in HELIOS, but also reinforced my confidence in designing scalable logic from scratch.
-    </p>
+    def peek(self):
+        return self.queue[0] if self.queue else None</code></pre>
+    </section>
+
+    <section>
+      <h2>Download / View Files</h2>
+      <ul>
+        <li><a href="../media_request_queue.py" download>Download media_request_queue.py</a></li>
+        <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/blob/main/helios_request_logger.zip" target="_blank">View helios_request_logger.zip on GitHub</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Reflection</h2>
+      <p>
+        This enhancement improved my ability to implement and test algorithmic logic in real-world systems.
+        I gained valuable experience with Python object-oriented design, defensive programming, and practical applications of data structures.
+        This foundation supports future work in optimizing HELIOS and designing scalable systems.
+      </p>
+    </section>
   </main>
 
   <footer>
