@@ -1,18 +1,41 @@
+<!-- databases.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Databases | Frank Inscoe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Databases</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Database Design Enhancement</h1>
-  <p>This artifact features the HELIOS Request Logger, a SQLite-backed system that stores user-submitted requests securely and efficiently.</p>
-  <ul>
-    <li>Enhancements: parameterized queries, input sanitation, normalized schema, persistent storage</li>
-    <li>Skills: SQL, Node.js, security practices, form integration</li>
-    <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/tree/main/request_logger">View Code</a></li>
-  </ul>
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <h1>Database Design & Integration</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="software.html">Software Design & Engineering</a></li>
+        <li><a href="algorithms.html">Algorithms & Data Structures</a></li>
+        <li><a href="https://youtu.be/YOUR_VIDEO_ID" target="_blank">Code Review Video</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Overview</h2>
+    <p>The final enhancement focuses on database normalization, query performance, and integrating SQLite into the HELIOS server for persistent request tracking. This allowed requests and errors to be logged and retrieved with SQL queries.</p>
+
+    <h2>What Was Improved</h2>
+    <ul>
+      <li>Created a normalized SQLite database schema for media requests</li>
+      <li>Implemented CRUD operations for persistence and retrieval</li>
+      <li>Used parameterized queries to prevent SQL injection</li>
+      <li>Linked log data directly with user actions for debugging</li>
+    </ul>
+
+    <h2>Artifact Location</h2>
+    <p>This enhancement is implemented in the <code>helios_logger.db</code> and related Python handlers in the repo.</p>
+  </main>
+  <footer>
+    <p>&copy; 2025 Frank Inscoe | <a href="mailto:frank.inscoe@outlook.com">Contact Me</a></p>
+  </footer>
 </body>
 </html>
