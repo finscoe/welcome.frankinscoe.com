@@ -14,7 +14,7 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="algorithms.html">Algorithms & Data Structures</a></li>
         <li><a href="databases.html">Databases</a></li>
-        <li><a href="https://cloud.frankinscoe.com/f/13044" target="_blank">Code Review Video</a></li>
+        <li><a href="code-review.html">Code Review</a></li>
       </ul>
     </nav>
   </header>
@@ -25,36 +25,31 @@
       This enhancement showcases my ability to engineer scalable and secure backend solutions by refactoring the backend logic of the HELIOS media server. Originally a monolithic Python script, the request handling process was transformed into a modular and maintainable Express.js backend with secure input handling and future-proof structure.
     </p>
 
-    <h2>Motivation and Rationale</h2>
-    <p>
-      I selected this artifact because it represents the foundational structure of HELIOS — the backend request processor. The original implementation lacked modularity and exposed the server to potential input vulnerabilities. My goal was to re-engineer this component following software design principles such as separation of concerns, secure input handling, and maintainability.
-    </p>
-
-    <h2>Enhancements Implemented</h2>
+    <h2>Download or View</h2>
     <ul>
-      <li>Refactored backend from procedural script into modular routes using Express.js</li>
-      <li>Implemented input validation to reduce attack surface (with future plans for CSRF protection)</li>
-      <li>Separated configuration, logic, and route handling for clarity and scalability</li>
-      <li>Created a simplified form interface for users to submit service requests</li>
+      <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/blob/main/helios_express_backend.zip" target="_blank">Download Express Backend Artifact (.zip)</a></li>
     </ul>
 
-    <h2>Challenges and Solutions</h2>
-    <p>
-      One key challenge was ensuring that data passed between client and server remained sanitized. To solve this, I used server-side validation and structured the logic into a class-based router pattern. This helped reduce redundancy and improved long-term maintainability.
-    </p>
+    <h2>Code Preview</h2>
+    <pre><code>// routes/requestHandler.js
+const express = require('express');
+const router = express.Router();
+const { handleFormSubmission } = require('../controllers/formController');
 
-    <h2>Skills Demonstrated</h2>
-    <ul>
-      <li>Modular software design</li>
-      <li>Express.js development</li>
-      <li>Server-side validation and security</li>
-      <li>User-centered interface planning</li>
-    </ul>
+router.post('/submit', handleFormSubmission);
 
-    <h2>Instructor Feedback Summary</h2>
-    <p>
-      Dr. Hawk noted that the modularization and secure input validation clearly demonstrated my growth in software engineering. They appreciated the articulate and insightful reflection but suggested adding more detail on specific logic problems and how I solved them. I have addressed this by documenting the design tradeoffs and security measures here.
-    </p>
+module.exports = router;
+
+// controllers/formController.js
+exports.handleFormSubmission = (req, res) => {
+  const { name, email, request } = req.body;
+  if (!name || !email || !request) {
+    return res.status(400).json({ error: 'All fields are required.' });
+  }
+  // Logic to process request
+  res.status(200).json({ message: 'Request received successfully.' });
+};
+</code></pre>
 
     <h2>Reflection</h2>
     <p>
