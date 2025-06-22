@@ -1,0 +1,6 @@
+title: Frank Inscoe • CS-499 Capstone Portfolio
+description: A professional ePortfolio showcasing my CS-499 artifacts.
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
