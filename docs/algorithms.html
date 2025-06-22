@@ -1,10 +1,9 @@
-<!-- algorithms.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Algorithms & Data Structures</title>
+  <title>Algorithms & Data Structures | CS-499 Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,21 +18,50 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <h2>Overview</h2>
-    <p>This enhancement demonstrates my ability to implement data structures and algorithms to solve a real-world problem. I improved the request logging mechanism in HELIOS to use optimized queue management and enhanced runtime performance.</p>
 
-    <h2>What Was Improved</h2>
+  <main>
+    <h2>Artifact Overview</h2>
+    <p>
+      This enhancement showcases a queue-based request management system I developed for HELIOS using Python. The original approach processed media requests as individual, one-off entries with no validation, order control, or optimization. I refactored this to use a SHA-256 de-duplicating priority queue system to streamline and secure backend automation.
+    </p>
+
+    <h2>Motivation and Rationale</h2>
+    <p>
+      In the original implementation, HELIOS lacked a way to prevent duplicate or malformed requests. Users could submit redundant requests which were logged repeatedly. I saw an opportunity to apply algorithmic thinking to solve this through data structures. Designing a priority queue system that deduplicates and verifies input was the ideal solution.
+    </p>
+
+    <h2>Enhancements Implemented</h2>
     <ul>
-      <li>Converted linear append-based logging to queue-based processing</li>
-      <li>Used Python’s built-in <code>queue.Queue</code> for thread-safe request handling</li>
-      <li>Reduced memory footprint and response time under concurrent load</li>
-      <li>Ensured correctness of queue operations through unit tests</li>
+      <li>Implemented a Python queue structure using <code>collections.deque</code> and <code>hashlib</code> for request tracking</li>
+      <li>Used SHA-256 hashes to identify and ignore duplicate submissions</li>
+      <li>Designed custom enqueue and dequeue logic for ordered and validated processing</li>
+      <li>Tested queue under concurrent load to verify runtime stability</li>
     </ul>
 
-    <h2>Artifact Location</h2>
-    <p>These changes are reflected in the core enhancements to the <code>helios_request_logger.py</code> component.</p>
+    <h2>Challenges and Solutions</h2>
+    <p>
+      One challenge was creating a hash function that would consistently identify duplicates without falsely rejecting valid requests. I overcame this by combining form fields into a consistent key string before hashing. Another issue was ensuring performance under simultaneous user input, which I tested by simulating multiple submissions using Python scripts.
+    </p>
+
+    <h2>Skills Demonstrated</h2>
+    <ul>
+      <li>Algorithm design and validation</li>
+      <li>Python data structures and hashing</li>
+      <li>Queue-based logic for asynchronous processing</li>
+      <li>Unit testing and runtime analysis</li>
+    </ul>
+
+    <h2>Instructor Feedback Summary</h2>
+    <p>
+      Dr. Hawk highlighted the effectiveness of this enhancement in showing applied algorithmic thinking. They praised the thoughtful use of deduplication and the way I connected theory to a real-world media workflow. Their suggestion was to include more explanation on how hashing can prevent conflicts and the implications for data integrity.
+    </p>
+
+    <h2>Reflection</h2>
+    <p>
+      This enhancement deepened my appreciation for efficient algorithms in backend systems. It reminded me that thoughtful planning of data flow is essential to maintaining long-term system health. Integrating data structures like queues not only solved real pain points in HELIOS, but also reinforced my confidence in designing scalable logic from scratch.
+    </p>
   </main>
+
   <footer>
     <p>&copy; 2025 Frank Inscoe | <a href="mailto:finscoe@gmail.com">Contact Me</a></p>
   </footer>

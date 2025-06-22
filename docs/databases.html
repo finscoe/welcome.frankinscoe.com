@@ -1,10 +1,9 @@
-<!-- databases.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Databases</title>
+  <title>Databases | CS-499 Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -19,21 +18,51 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <h2>Overview</h2>
-    <p>The final enhancement focuses on database normalization, query performance, and integrating SQLite into the HELIOS server for persistent request tracking. This allowed requests and errors to be logged and retrieved with SQL queries.</p>
 
-    <h2>What Was Improved</h2>
+  <main>
+    <h2>Artifact Overview</h2>
+    <p>
+      This enhancement focused on integrating a robust and persistent logging system into HELIOS using SQLite. Prior to this, request data was held only in memory or appended loosely to text files, which was inefficient and unreliable. My enhancement structured this system using database normalization principles and implemented full CRUD capabilities for persistent data operations.
+    </p>
+
+    <h2>Motivation and Rationale</h2>
+    <p>
+      Accurate and secure data persistence is crucial for any scalable application. For HELIOS, having an auditable and queryable request log would allow me to track usage patterns, detect errors, and enhance user accountability. Implementing a normalized schema ensured that data was stored efficiently and could evolve as new features were added.
+    </p>
+
+    <h2>Enhancements Implemented</h2>
     <ul>
-      <li>Created a normalized SQLite database schema for media requests</li>
-      <li>Implemented CRUD operations for persistence and retrieval</li>
-      <li>Used parameterized queries to prevent SQL injection</li>
-      <li>Linked log data directly with user actions for debugging</li>
+      <li>Designed and implemented a normalized SQLite database schema for media request logs</li>
+      <li>Integrated Python's <code>sqlite3</code> module to handle persistent storage</li>
+      <li>Added INSERT, SELECT, UPDATE, and DELETE functionality to handle real-world database interactions</li>
+      <li>Wrote parameterized queries to protect against SQL injection</li>
+      <li>Created log-query scripts for analysis and debugging</li>
     </ul>
 
-    <h2>Artifact Location</h2>
-    <p>This enhancement is implemented in the <code>helios_logger.db</code> and related Python handlers in the repo.</p>
+    <h2>Challenges and Solutions</h2>
+    <p>
+      The biggest challenge was adapting the existing HELIOS request handler to route information to both the in-memory queue and the SQLite database without introducing latency or redundancy. I solved this by separating database logic into a dedicated module that handled commit cycles asynchronously, preserving system responsiveness.
+    </p>
+
+    <h2>Skills Demonstrated</h2>
+    <ul>
+      <li>Relational database design and normalization</li>
+      <li>SQL scripting and parameterization</li>
+      <li>Secure data handling</li>
+      <li>Python and SQLite integration</li>
+    </ul>
+
+    <h2>Instructor Feedback Summary</h2>
+    <p>
+      Dr. Hawk commended the integration of persistent storage and noted that my database schema reflected a strong understanding of normalization and efficient table design. They encouraged the use of query examples in future iterations, which I have included in my reflections and documentation.
+    </p>
+
+    <h2>Reflection</h2>
+    <p>
+      Incorporating a database into HELIOS was a transformative enhancement. It pushed me to think about data structure longevity, security, and future scalability. The database integration not only supports user-facing features but also creates a foundation for future analytics and reporting capabilities. This project helped bridge my interests in backend architecture and data science.
+    </p>
   </main>
+
   <footer>
     <p>&copy; 2025 Frank Inscoe | <a href="mailto:finscoe@gmail.com">Contact Me</a></p>
   </footer>

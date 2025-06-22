@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Software Design & Engineering</title>
+  <title>Software Design & Engineering | CS-499 Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -18,21 +18,50 @@
       </ul>
     </nav>
   </header>
-  <main>
-    <h2>Overview</h2>
-    <p>This enhancement focuses on refining the HELIOS media server’s backend functionality using best practices in modularity, exception handling, and maintainable code. The core improvement was upgrading the <code>media_request_queue.py</code> script to a more structured, class-based design.</p>
 
-    <h2>What Was Improved</h2>
+  <main>
+    <h2>Artifact Overview</h2>
+    <p>
+      This enhancement showcases my ability to engineer scalable and secure backend solutions by refactoring the backend logic of the HELIOS media server. Originally a monolithic Python script, the request handling process was transformed into a modular and maintainable Express.js backend with secure input handling and future-proof structure.
+    </p>
+
+    <h2>Motivation and Rationale</h2>
+    <p>
+      I selected this artifact because it represents the foundational structure of HELIOS — the backend request processor. The original implementation lacked modularity and exposed the server to potential input vulnerabilities. My goal was to re-engineer this component following software design principles such as separation of concerns, secure input handling, and maintainability.
+    </p>
+
+    <h2>Enhancements Implemented</h2>
     <ul>
-      <li>Refactored monolithic script into modular classes</li>
-      <li>Implemented error handling and validation</li>
-      <li>Improved readability and maintainability</li>
-      <li>Aligned logic with object-oriented programming principles</li>
+      <li>Refactored backend from procedural script into modular routes using Express.js</li>
+      <li>Implemented input validation to reduce attack surface (with future plans for CSRF protection)</li>
+      <li>Separated configuration, logic, and route handling for clarity and scalability</li>
+      <li>Created a simplified form interface for users to submit service requests</li>
     </ul>
 
-    <h2>Artifact Location</h2>
-    <p>You can view the updated script in the GitHub repository under <code>media_request_queue.py</code>.</p>
+    <h2>Challenges and Solutions</h2>
+    <p>
+      One key challenge was ensuring that data passed between client and server remained sanitized. To solve this, I used server-side validation and structured the logic into a class-based router pattern. This helped reduce redundancy and improved long-term maintainability.
+    </p>
+
+    <h2>Skills Demonstrated</h2>
+    <ul>
+      <li>Modular software design</li>
+      <li>Express.js development</li>
+      <li>Server-side validation and security</li>
+      <li>User-centered interface planning</li>
+    </ul>
+
+    <h2>Instructor Feedback Summary</h2>
+    <p>
+      Dr. Hawk noted that the modularization and secure input validation clearly demonstrated my growth in software engineering. They appreciated the articulate and insightful reflection but suggested adding more detail on specific logic problems and how I solved them. I have addressed this by documenting the design tradeoffs and security measures here.
+    </p>
+
+    <h2>Reflection</h2>
+    <p>
+      This enhancement was a turning point in how I approach backend development. It allowed me to integrate software engineering best practices with real-world application in my HELIOS project — making it more robust, secure, and user-ready.
+    </p>
   </main>
+
   <footer>
     <p>&copy; 2025 Frank Inscoe | <a href="mailto:finscoe@gmail.com">Contact Me</a></p>
   </footer>
