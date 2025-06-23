@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Algorithms & Data Structures | CS-499 Portfolio</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Algorithms & Data Structures</h1>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="software.html">Software Design & Engineering</a></li>
         <li><a href="algorithms.html">Algorithms & Data Structures</a></li>
         <li><a href="databases.html">Databases</a></li>
@@ -24,33 +24,36 @@
     <section>
       <h2>Artifact Overview</h2>
       <p>
-        This enhancement focused on developing and optimizing an algorithmic solution to manage media request processing in the HELIOS server project.
-        The implemented Python-based queue system utilizes object-oriented design to manage asynchronous request handling.
+        This enhancement involved implementing an optimized request queue to manage asynchronous media downloads
+        for the HELIOS project. Using Python, I created a `MediaRequestQueue` class that applies fundamental data structure principles
+        to ensure orderly processing, duplication prevention, and efficient memory usage.
       </p>
     </section>
 
     <section>
       <h2>Project Background</h2>
       <p>
-        In HELIOS, users can submit requests for media downloads. This enhancement introduced a structured, class-based queue
-        that ensures requests are processed in FIFO order while avoiding duplication and maintaining system performance.
+        The HELIOS system receives many automated media requests from integrated services like Sonarr and Radarr.
+        Prior to this enhancement, requests were unstructured and vulnerable to duplication or overflow. To improve the reliability of this system,
+        I implemented a FIFO-style queue with a configurable maximum size and safety checks.
       </p>
     </section>
 
     <section>
       <h2>Enhancement Highlights</h2>
       <ul>
-        <li>Designed a robust Python queue class with enqueue, dequeue, and peek methods</li>
-        <li>Implemented a method to avoid duplicate requests and manage maximum queue length</li>
-        <li>Integrated real-time logging for each media request processed</li>
-        <li>Applied unit testing to validate the correctness of queue behavior</li>
+        <li>Created a reusable and testable Python class to manage media requests</li>
+        <li>Implemented safe enqueuing, deduplication, and peek methods</li>
+        <li>Added basic queue size limit enforcement to prevent memory overrun</li>
+        <li>Wrote unit tests to verify queue behavior across different usage scenarios</li>
       </ul>
     </section>
 
     <section>
       <h2>Preview the Code</h2>
-      <p>Below is a code snippet from the core class used in the request queue system:</p>
-      <pre><code class="language-python">class MediaRequestQueue:
+      <p>Below is a snippet from the custom request queue class:</p>
+      <pre><code class="language-py">
+class MediaRequestQueue:
     def __init__(self, max_size=50):
         self.queue = []
         self.max_size = max_size
@@ -65,23 +68,24 @@
         return None
 
     def peek(self):
-        return self.queue[0] if self.queue else None</code></pre>
+        return self.queue[0] if self.queue else None
+      </code></pre>
     </section>
 
     <section>
       <h2>Download / View Files</h2>
       <ul>
-        <li><a href="../media_request_queue.py" download>Download media_request_queue.py</a></li>
-        <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/blob/main/helios_request_logger.zip" target="_blank">View helios_request_logger.zip on GitHub</a></li>
+        <li><a href="artifacts/media_request_queue.py" download>Download media_request_queue.py</a></li>
+        <li><a href="artifacts/helios_request_logger.zip" download>Download HELIOS request_logger.zip</a></li>
       </ul>
     </section>
 
     <section>
       <h2>Reflection</h2>
       <p>
-        This enhancement improved my ability to implement and test algorithmic logic in real-world systems.
-        I gained valuable experience with Python object-oriented design, defensive programming, and practical applications of data structures.
-        This foundation supports future work in optimizing HELIOS and designing scalable systems.
+        This enhancement reinforced my understanding of how abstract data structures translate into real-world functionality.
+        Managing asynchronous workflows with a queue helped reduce system errors and laid the foundation for more advanced
+        request processing features in the future.
       </p>
     </section>
   </main>

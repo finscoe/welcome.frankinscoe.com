@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Databases | CS-499 Portfolio</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Databases</h1>
     <nav>
       <ul>
-        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="software.html">Software Design & Engineering</a></li>
         <li><a href="algorithms.html">Algorithms & Data Structures</a></li>
         <li><a href="databases.html">Databases</a></li>
@@ -24,68 +24,68 @@
     <section>
       <h2>Artifact Overview</h2>
       <p>
-        This enhancement centered on building a robust and persistent logging system into HELIOS using SQLite. Prior to this,
-        request data was either only stored in memory or loosely appended to text files, making pattern analysis difficult.
-        This improvement helped bring durable, queryable structure to log storage.
+        This enhancement focused on integrating a robust and persistent logging system into HELIOS using SQLite.
+        Prior to this, request data was held only in memory or appended loosely to text files. The database system ensures structured storage and powerful querying capabilities.
       </p>
     </section>
 
     <section>
       <h2>Project Background</h2>
       <p>
-        Data persistence is critical for any real-world application. For HELIOS, having an auditable and queryable request log allowed me
-        to track usage patterns, detect media issues, and generate useful insights. I integrated SQLite to enable local database
-        interactions through Python.
+        Persistent data logging is crucial for any real-world application. For HELIOS, having an auditable and queryable request log would allow me to track usage patterns, detect errors, and audit system events.
+        I chose SQLite due to its ease of deployment and zero-maintenance requirements.
       </p>
     </section>
 
     <section>
       <h2>Enhancement Highlights</h2>
       <ul>
-        <li>Created a Python class to log each request to a local SQLite database</li>
-        <li>Stored details such as timestamp, file path, media type, and user request origin</li>
-        <li>Enabled future scalability by normalizing data across multiple tables</li>
-        <li>Built queries to identify usage trends and diagnose failed requests</li>
+        <li>Created a SQLite database schema to store media request logs</li>
+        <li>Wrote controller methods to handle insert queries</li>
+        <li>Implemented SQLite query functions to manually test real-world database interactions</li>
+        <li>Validated query logic using `sqlite3` CLI and Python</li>
       </ul>
     </section>
 
     <section>
       <h2>Preview the Code</h2>
-      <p>Example snippet showing table creation and logging logic in Python:</p>
-      <pre><code class="language-python">import sqlite3
+      <p>Below is a snippet of the logging logic written in Python to insert information into both the memory queue and the SQLite database without breaking the existing flow or introducing latency or redundancy:</p>
+      <pre><code class="language-py">
+import sqlite3
 
-def initialize_db():
-    conn = sqlite3.connect('helios_requests.db')
-    c = conn.cursor()
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS requests (
-            id INTEGER PRIMARY KEY,
-            timestamp TEXT,
-            filepath TEXT,
-            media_type TEXT,
-            user TEXT
-        )
-    ''')
-    conn.commit()
-    conn.close()
+def log_request_to_db(title, timestamp):
+    connection = sqlite3.connect("helios_logs.db")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO requests (title, timestamp) VALUES (?, ?)", (title, timestamp))
+    connection.commit()
+    connection.close()
+      </code></pre>
+    </section>
 
-initialize_db()</code></pre>
+    <section>
+      <h2>Database Schema</h2>
+      <pre><code class="language-sql">
+CREATE TABLE requests (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT NOT NULL,
+  timestamp TEXT NOT NULL
+);
+      </code></pre>
     </section>
 
     <section>
       <h2>Download / View Files</h2>
       <ul>
-        <li><a href="../helios_request_logger.zip" download>Download helios_request_logger.zip</a></li>
-        <li><a href="https://github.com/finscoe/welcome.frankinscoe.com/blob/main/helios_request_logger.zip" target="_blank">View on GitHub</a></li>
+        <li><a href="artifacts/helios_request_logger.zip" download>Download: helios_request_logger.zip</a></li>
+        <li><a href="artifacts/Helios_Capstone_Enhancement_SoftwareEngineering.zip" download>Final Project Archive (.zip)</a></li>
       </ul>
     </section>
 
     <section>
       <h2>Reflection</h2>
       <p>
-        Adding a structured database backend to HELIOS was a transformative enhancement. It pushed me to think about data
-        structure longevity, security, and future scalability. The database integration serves as the foundation for expanded
-        analytics and dashboard tools I plan to implement in the future.
+        Implementing a persistent data layer with SQLite was a transformative enhancement. It pushed me to think about data structure integrity, security, and future scalability.
+        The database integration supports debugging, analytics, and observability for long-term system maintenance.
       </p>
     </section>
   </main>
