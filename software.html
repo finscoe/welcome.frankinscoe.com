@@ -24,62 +24,59 @@
     <section>
       <h2>Artifact Overview</h2>
       <p>
-        This enhancement focused on improving the modular architecture and maintainability of the HELIOS server.
-        I restructured the code into services and routes using Express.js, introduced logging middleware, and ensured separation of concerns across modules.
+        This enhancement focused on improving the modular architecture and maintainability of the HELIOS server. I restructured the code into services and routes using Express.js, introduced logging middleware, and ensured separation of concerns across modules.
       </p>
     </section>
 
     <section>
       <h2>Project Background</h2>
       <p>
-        <strong>HELIOS</strong> is my custom-built self-hosted media and request management server running on an UNRAID-powered NAS system.
-        I implemented this project to automate request handling, logging, and media indexing using services like Plex, Sonarr, and a custom-built HTTP interface.
+        HELIOS is my custom-built self-hosted media and request management server running on an UNRAID-powered NAS system. I implemented this project to automate request handling, logging, and media indexing using services like Plex, Sonarr, and Radarr.
       </p>
     </section>
 
     <section>
       <h2>Enhancement Highlights</h2>
       <ul>
-        <li>Rewrote HELIOS request logger to split router logic into modular services and middleware</li>
-        <li>Improved scalability and testability by adopting object-oriented responsibility principles</li>
-        <li>Introduced external error tracking and debug logging to aid in future troubleshooting</li>
-        <li>Clean separation of frontend/backend behavior in isolated controller responsibilities</li>
+        <li>Restructured HELIOS request logger into modular Express routes and middleware</li>
+        <li>Improved scalability and maintainability by adopting single responsibility principles</li>
+        <li>Introduced centralized error handling and debug utilities to aid in future troubleshooting</li>
+        <li>Clean separation of frontend/backend behavior to isolate service responsibilities</li>
       </ul>
     </section>
 
     <section>
       <h2>Preview the Code</h2>
-      <p>Below is a snippet from the refactored Express.js app used to manage request services and middleware.</p>
-      <pre><code class="language-js">
-const express = require("express");
+      <p>Below is a snippet from the refactored Express.js app used to handle requests and middleware.</p>
+<pre><code>const express = require("express");
 const app = express();
-const requestQueue = require("./controllers/requestQueue");
-const logger = require("./middleware/logger");
+const requestLogger = require("./middleware/requestLogger");
 
 app.use(express.json());
-app.use(logger);
-app.post("/request", requestQueue);
-app.listen(3000, () => {
-  console.log("HELIOS server running...");
+app.use(requestLogger);
+
+app.post("/log", (req, res) => {
+  console.log(req.body);
+  res.status(200).send("Logged successfully.");
 });
-      </code></pre>
+
+app.listen(3000, () => console.log("Server running on port 3000"));  
+</code></pre>
     </section>
 
     <section>
       <h2>Download / View Files</h2>
       <ul>
-        <li><a href="artifacts/media_request_queue.py" download>Download media_request_queue.py</a></li>
-        <li><a href="artifacts/helios_request_logger.zip" download>View HELIOS request_logger.zip</a></li>
-        <li><a href="artifacts/Helios_Capstone_Enhancement_SoftwareEngineering.zip" download>Final Project Archive (.zip)</a></li>
+        <li><a href="https://finscoe.github.io/welcome.frankinscoe.com/artifacts/helios_request_logger.zip" target="_blank">Download HELIOS request_logger.zip</a></li>
+        <li><a href="https://finscoe.github.io/welcome.frankinscoe.com/artifacts/media_request_queue.py" target="_blank">View media_request_queue.py (code file)</a></li>
+        <li><a href="https://finscoe.github.io/welcome.frankinscoe.com/artifacts/Helios_Capstone_Enhancement_SoftwareEngineering.zip" target="_blank">Final Project Archive (.zip)</a></li>
       </ul>
     </section>
 
     <section>
       <h2>Reflection</h2>
       <p>
-        This enhancement helped solidify my ability to apply software design principles to real-world problems.
-        The refactoring increased the maintainability of HELIOS and laid a foundation for further improvements,
-        like user authentication and scalability.
+        This enhancement helped solidify my ability to apply software design principles to real-world problems. The refactoring increased the maintainability of HELIOS and laid a foundation for further improvements, like user authentication and modular plugins.
       </p>
     </section>
   </main>
